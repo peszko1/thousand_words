@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: 
+  status: 1
+  learned: false
+
+two:
+  word: 
+  status: 1
+  learned: false

@@ -1,0 +1,32 @@
+<div class="inner cover">
+  <% unless @word %>
+    <h1 class="cover-heading">Brak słów</h1>
+  <% else %>
+    <h1 class="cover-heading"><%= @word.original %></h1>
+    <div class="btn-group col-md-12">
+      <%= form_for trained_path, method: :put do |f| %>
+        <a onclick="$('#translation').toggle()" class="btn btn-lg btn-info col-md-6">
+          <span class="glyphicon glyphicon-star"></span>
+          Znaczenie
+        </a>
+        <%= f.hidden_field :id, value: @word.id, name: 'id' %>
+        <%= button_tag type: :submit, class: "btn btn-lg btn-success col-md-6" do %>
+          <span class="glyphicon glyphicon-thumbs-up"></span>
+          Następne
+        <% end %>
+      <% end %>
+<!--     <a href="" class="btn btn-lg btn-danger col-md-4">
+      <span class="glyphicon glyphicon-thumbs-down"></span>
+      Nie umiem
+    </a> -->
+    </div>
+    <div id="translation" style="display: none" class="col-md-12">
+      <ul class="list-group">
+        <li><%= @translation_pl %></li>
+        <% for translation in @translations do %>
+          <li><%= translation %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
