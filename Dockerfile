@@ -1,8 +1,10 @@
 FROM phusion/passenger-full:0.9.8
 
+RUN apt-get install libsqlite3-dev
 RUN rm /etc/nginx/sites-enabled/default
 ADD nginx.conf /etc/nginx/sites-enabled/webapp.conf
 RUN rm -f /etc/service/nginx/down
+
 
 RUN mkdir /home/app/webapp
 WORKDIR /home/app/webapp
