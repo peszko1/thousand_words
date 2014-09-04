@@ -1,7 +1,7 @@
 class WordsService
   def initialize(user)
     @user = user
-    @beanstalk = Beaneater::Pool.new(['localhost:11300'])
+    @beanstalk = Beaneater::Pool.new(["#{ENV['BEANSTALKD_HOST']}:#{ENV['BEANSTALKD_PORT']}"])
   end
 
   def next_word

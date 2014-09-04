@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   get 'words/train'
   put 'words/train' => 'words#trained', as: :trained
+
+  resources :words
+
   root 'words#train'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

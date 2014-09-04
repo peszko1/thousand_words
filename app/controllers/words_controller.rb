@@ -3,8 +3,10 @@ require 'open-uri'
 class WordsController < ApplicationController
   def train
     @word = WordsService.new(current_user).next_word
-    @translation_pl = Yandex::Client.translate(@word.original)
-    @translations = Wordnik.word.get_definitions(@word.original, limit: 5).map{|w|w["text"]}
+    if @word
+      @translation_pl = Yandex::Client.translate(@word.original)
+      @translations = Wordnik.word.get_definitions(@word.original, limit: 5).map{|w|w["text"]}
+    end
   end
 
   def trained
@@ -16,4 +18,16 @@ class WordsController < ApplicationController
 
     redirect_to root_path
   end
-end
+
+  def new
+    @word = Word.new
+  end
+
+  def create
+    @word = Word.create(params)
+  end
+
+  def edit
+    
+  end  
+ end
